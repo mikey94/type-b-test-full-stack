@@ -22,9 +22,9 @@ export const createTodoController = async (req: Request, res: Response) => {
 
 export const updateTodoController = async (req: Request, res: Response) => {
     const { id } = req.params as { id: string };
-    const { title, description, completed } = req.body as { title: string; description: string; completed: boolean };
+    const { title, description } = req.body as { title: string; description: string;};
     try {
-        const updatedTodo = await updateTodo(id, title, description, completed);
+        const updatedTodo = await updateTodo(id, title, description);
         if (!updatedTodo) {
             return res.status(404).json({ error: "Todo not found" });
         }
